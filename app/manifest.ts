@@ -6,14 +6,14 @@ import type { MetadataRoute } from "next";
 // a phone practical.
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "OpenReply",
-    short_name: "OpenReply",
-    description: "Instagram comment-to-DM automation",
+    name: "Áurea",
+    short_name: "Áurea",
+    description: "Automação de comentários para DM no Instagram",
     start_url: "/overview",
     display: "standalone",
     orientation: "portrait",
-    background_color: "#18181b",
-    theme_color: "#18181b",
+    background_color: "#08111f",
+    theme_color: "#08111f",
     icons: [
       { src: "/icon-192.png", sizes: "192x192", type: "image/png", purpose: "any" },
       { src: "/icon-512.png", sizes: "512x512", type: "image/png", purpose: "any" },

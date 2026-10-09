@@ -7,8 +7,7 @@ import { prisma } from "@/lib/db/client";
 import { ensureWorkspaceForUser } from "@/lib/workspace";
 
 export async function generateMetadata() {
-  const { t } = await getI18n();
-  return { title: t("OpenReply - Open source Instagram comment-to-DM automation") };
+  return { title: "Áurea" };
 }
 
 export default async function DashboardLayout({
@@ -20,7 +19,9 @@ export default async function DashboardLayout({
   const session = await auth();
 
   if (!session?.user?.id) {
-    redirect("/login");
+    // The cookie may still be present but expired/invalid; tell the proxy so it
+    // clears it instead of bouncing /login back here in a redirect loop.
+    redirect("/login?expired=1");
   }
 
   const workspace = await ensureWorkspaceForUser(

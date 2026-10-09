@@ -25,6 +25,29 @@ export function proxy(request: NextRequest) {
     return NextResponse.redirect(loginUrl);
   }
 
+  // The dashboard sends an expired/invalid session here with ?expired=1. Drop
+  // the stale cookie and show the login form, or /login and /dashboard would
+  // redirect to each other forever.
+  if (isLogin && request.nextUrl.searchParams.has("expired")) {
+    const response = NextResponse.next();
+    for (const name of [
+      "authjs.session-token",
+      "__Secure-authjs.session-token",
+      "next-auth.session-token",
+      "__Secure-next-auth.session-token",
+    ]) {
+      if (request.cookies.has(name)) {
+        // __Secure- cookies are only overwritten by a Secure Set-Cookie.
+        response.cookies.set(name, "", {
+          path: "/",
+          maxAge: 0,
+          secure: name.startsWith("__Secure-"),
+        });
+      }
+    }
+    return response;
+  }
+
   if (isLogin && isAuthenticated) {
     return NextResponse.redirect(new URL("/dashboard", request.url));
   }
