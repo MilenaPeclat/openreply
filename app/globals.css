@@ -108,91 +108,53 @@ select:focus-visible {
 .zernio-sponsor { font-family: 'Zernio Geist', sans-serif; }
 
 /* ─────────────────────────────────────────────────────────────────────────
-   Áurea theme — navy & gold, dark.
+   DirectFlow theme — light and minimal: off-white canvas, white cards,
+   one indigo accent.
    Kept as one block at the end of this file so syncing the upstream fork
    stays conflict-free: it only overrides tokens and a few utilities.
    ───────────────────────────────────────────────────────────────────────── */
 @theme inline {
-  --color-background: #08111f;
-  --color-foreground: #eef2fa;
-  --color-surface: #0f1b31;
-  --color-surface-hover: #172743;
-  --color-border: #1e2f52;
-  --color-border-hover: #2c4170;
-  --color-muted: #94a3c2;
-  --color-accent: #d4af37;
-  --color-accent-hover: #e3c160;
-  --color-success: #34d399;
-  --color-error: #f87171;
-  --color-warning: #fbbf24;
-  --font-sans: var(--font-aurea-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
-}
-
-:root {
-  --aurea-gold-1: #f3d77a;
-  --aurea-gold-2: #d4af37;
-  --aurea-gold-3: #a8841f;
-  --aurea-on-gold: #08111f;
-  --aurea-glow: rgba(212, 175, 55, 0.14);
-}
-
-html {
-  color-scheme: dark;
+  --color-background: #fafafa;
+  --color-foreground: #18181b;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f4f4f5;
+  --color-border: #ececef;
+  --color-border-hover: #d9d9de;
+  --color-muted: #71717a;
+  --color-accent: #4f46e5;
+  --color-accent-hover: #4338ca;
+  --font-sans: var(--font-brand-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 ::selection {
-  background: rgba(212, 175, 55, 0.35);
-  color: #ffffff;
+  background: rgba(79, 70, 229, 0.16);
 }
 
-/* Thin navy scrollbars instead of the bright system ones. */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #24375e transparent;
+  scrollbar-color: #d9d9de transparent;
 }
 
-/* Cards: soft navy gradient, rounded, a hairline of gold light on top. */
+/* Cards: white, rounded, a whisper of shadow. */
 .panel,
 .glass,
 .glass-strong {
-  background: linear-gradient(180deg, #12213c 0%, #0e192e 100%);
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 14px;
-  box-shadow:
-    inset 0 1px 0 rgba(243, 215, 122, 0.06),
-    0 10px 30px -18px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
 }
 
-/* Gold buttons and bars: metallic gradient, navy text for contrast. */
-.bg-accent {
-  background-image: linear-gradient(135deg, var(--aurea-gold-1) 0%, var(--aurea-gold-2) 45%, var(--aurea-gold-3) 100%);
-}
-.bg-accent.text-white,
-.bg-accent .text-white,
-.bg-accent .text-white\/70 {
-  color: var(--aurea-on-gold);
-}
 a.bg-accent,
 button.bg-accent {
   border-radius: 10px;
-  box-shadow: 0 6px 20px -10px var(--aurea-glow), 0 0 0 1px rgba(243, 215, 122, 0.25) inset;
-  transition: filter 150ms ease, box-shadow 150ms ease;
-}
-a.bg-accent:hover,
-button.bg-accent:hover {
-  filter: brightness(1.08);
-  box-shadow: 0 8px 26px -10px rgba(212, 175, 55, 0.45), 0 0 0 1px rgba(243, 215, 122, 0.35) inset;
+  transition: background-color 150ms ease;
 }
 
-/* Form fields on the dark theme. */
 input:not([type="checkbox"]):not([type="radio"]),
 textarea,
 select {
   border-radius: 10px;
-}
-input::placeholder,
-textarea::placeholder {
-  color: #5f7092;
 }
 input:focus,
 textarea:focus,
@@ -200,49 +162,22 @@ select:focus {
   border-color: var(--color-accent);
 }
 
-/* Sidebar: active page gets a gold marker. */
+/* Sidebar: active page reads in the accent on a faint tint. */
+aside nav a {
+  border-radius: 10px;
+}
 aside nav a[aria-current="page"] {
-  position: relative;
-  background: linear-gradient(90deg, rgba(212, 175, 55, 0.12), rgba(212, 175, 55, 0));
-  color: var(--color-foreground);
-}
-aside nav a[aria-current="page"]::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 8px;
-  bottom: 8px;
-  width: 3px;
-  border-radius: 3px;
-  background: linear-gradient(180deg, var(--aurea-gold-1), var(--aurea-gold-3));
-}
-
-/* Light-theme greys that would vanish on navy. */
-.bg-zinc-200,
-.bg-zinc-200\/60 {
-  background-color: #1e2f52;
-}
-.bg-zinc-300 {
-  background-color: #2c3f66;
-}
-.text-zinc-500 {
-  color: #8b9bbb;
-}
-.placeholder\:text-zinc-600::placeholder {
-  color: #5f7092;
+  background: rgba(79, 70, 229, 0.08);
+  color: var(--color-accent);
 }
 
 /* Brand wordmark. */
-.aurea-wordmark {
-  font-size: 30px;
+.brand-wordmark {
+  font-size: 20px;
   line-height: 1;
-  font-family: var(--font-aurea-display), Georgia, serif;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  background: linear-gradient(135deg, var(--aurea-gold-1), var(--aurea-gold-2) 50%, var(--aurea-gold-3));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-foreground);
 }
 
 /* Zernio is an optional paid provider this instance doesn't use. */

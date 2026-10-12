@@ -7,7 +7,7 @@ import { prisma } from "@/lib/db/client";
 import { ensureWorkspaceForUser } from "@/lib/workspace";
 
 export async function generateMetadata() {
-  return { title: "Áurea" };
+  return { title: "DirectFlow" };
 }
 
 export default async function DashboardLayout({

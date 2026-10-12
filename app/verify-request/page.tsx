@@ -4,7 +4,7 @@ import Link from "next/link";
 export async function generateMetadata() {
   const { t } = await getI18n();
   return {
-    title: "Confira seu e-mail · Áurea",
+    title: "Confira seu e-mail · DirectFlow",
     description: t("A sign-in link was sent to your email."),
   };
 }
@@ -15,8 +15,8 @@ export default async function VerifyRequestPage() {
     <div className="min-h-screen flex items-center justify-center px-6">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="aurea-wordmark" style={{ fontSize: 56 }}>
-            Áurea
+          <h1 className="brand-wordmark" style={{ fontSize: 32 }}>
+            DirectFlow
           </h1>
         </div>
 

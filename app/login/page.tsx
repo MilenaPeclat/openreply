@@ -10,7 +10,7 @@ const SETUP_DOCS_URL = `${GITHUB_URL}/blob/main/docs/setup.md`;
 export async function generateMetadata() {
   const { t } = await getI18n();
   return {
-    title: "Entrar · Áurea",
+    title: "Entrar · DirectFlow",
     description: t("Sign in to manage Instagram comment-to-DM campaigns."),
   };
 }
@@ -29,8 +29,8 @@ export default async function LoginPage({
     return (
       <div className="min-h-screen flex items-center justify-center px-6">
         <div className="w-full max-w-md text-center">
-          <h1 className="aurea-wordmark" style={{ fontSize: 56 }}>
-            Áurea
+          <h1 className="brand-wordmark" style={{ fontSize: 32 }}>
+            DirectFlow
           </h1>
           <div className="panel rounded p-8 mt-8 shadow-black/40">
             <h2 className="text-lg font-semibold text-foreground">
@@ -73,8 +73,8 @@ export default async function LoginPage({
     <div className="min-h-screen flex items-center justify-center px-6">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="aurea-wordmark" style={{ fontSize: 56 }}>
-            Áurea
+          <h1 className="brand-wordmark" style={{ fontSize: 32 }}>
+            DirectFlow
           </h1>
           <p className="text-muted text-sm leading-relaxed mt-2">
             {selectedTemplate

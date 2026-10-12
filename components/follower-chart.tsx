@@ -31,11 +31,11 @@ export interface FollowerChartPoint {
   delta: number | null;
 }
 
-// Colors read against the dark navy chart surface (Áurea theme): gold line,
-// grid/axis text match the border/muted tokens. See globals.css.
-const SERIES_COLOR = "#d4af37";
-const GRID_COLOR = "#1e2f52";
-const AXIS_TEXT = "#94a3c2";
+// Colors read against the white chart surface: the accent line clears 3:1
+// contrast and grid/axis text match the muted/border tokens. See globals.css.
+const SERIES_COLOR = "#4f46e5";
+const GRID_COLOR = "#ececef";
+const AXIS_TEXT = "#71717a";
 
 function formatCompact(n: number, locale: Locale): string {
   if (Math.abs(n) >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;
@@ -208,7 +208,7 @@ export default function FollowerChart({
                 stroke={SERIES_COLOR}
                 strokeWidth={2}
                 dot={false}
-                activeDot={{ r: 4, fill: SERIES_COLOR, stroke: "#08111f", strokeWidth: 2 }}
+                activeDot={{ r: 4, fill: SERIES_COLOR, stroke: "#ffffff", strokeWidth: 2 }}
                 isAnimationActive={false}
               />
             </LineChart>

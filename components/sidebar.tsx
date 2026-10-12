@@ -64,11 +64,11 @@ export default function Sidebar({
             <Image
               src="/icon-192.png"
               alt=""
-              width={38}
-              height={38}
+              width={32}
+              height={32}
               className="rounded-lg"
             />
-            <span className="aurea-wordmark">Áurea</span>
+            <span className="brand-wordmark">DirectFlow</span>
           </Link>
         </div>
 

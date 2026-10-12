@@ -1,23 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
-const aureaSans = Plus_Jakarta_Sans({
+const brandSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-aurea-sans",
-  display: "swap",
-});
-
-const aureaDisplay = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-aurea-display",
+  variable: "--font-brand-sans",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Áurea",
+  title: "DirectFlow",
   description:
     "A free, self-hosted ManyChat alternative. Send an Instagram DM automatically when someone comments a keyword on your post or reel, using the official Meta API.",
   keywords: [
@@ -30,8 +23,8 @@ export const metadata: Metadata = {
   manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,
-    title: "Áurea",
-    statusBarStyle: "black-translucent",
+    title: "DirectFlow",
+    statusBarStyle: "default",
   },
   icons: {
     icon: [
@@ -43,7 +36,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#08111f",
+  themeColor: "#fafafa",
   width: "device-width",
   initialScale: 1,
   // Installed on iOS the app owns the full screen, notch included; the safe
@@ -57,10 +50,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="pt-BR"
-      className={`h-full dark ${aureaSans.variable} ${aureaDisplay.variable}`}
-    >
+    <html lang="pt-BR" className={`h-full ${brandSans.variable}`}>
       <body
         className="min-h-full bg-background text-foreground font-sans antialiased"
         // Clears the home indicator when installed; 0 everywhere else.
