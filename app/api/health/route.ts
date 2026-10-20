@@ -99,14 +99,20 @@ export async function GET() {
     queue.status === "ok" &&
     worker.healthy;
 
+  // This route is public, so error messages (hosts, driver errors, queue
+  // counts) go to the server logs only; callers just see pass/fail per check.
+  if (!healthy) {
+    console.error("[health] degraded", { database, redis, queue, worker });
+  }
+
   return NextResponse.json(
     {
       status: healthy ? "ok" : "degraded",
       checks: {
-        database,
-        redis,
-        queue,
-        worker,
+        database: { status: database.status },
+        redis: { status: redis.status },
+        queue: { status: queue.status },
+        worker: { healthy: worker.healthy },
       },
     },
     { status: healthy ? 200 : 503 }
